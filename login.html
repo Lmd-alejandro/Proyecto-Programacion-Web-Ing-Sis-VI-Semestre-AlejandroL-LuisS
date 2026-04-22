@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MyTeacher</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+    <nav class="navbar">
+        <div class="logo"><strong>MyTeacher</strong></div>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="principal.html">Buscar Profe</a></li>
+            <li><a href="login.html" class="btn-login">Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="login-container">
+        <div class="login-card">
+            <h2>¡Hola de nuevo!</h2>
+            <p class="subtitle">Ingresa tus datos para continuar</p>
+            
+            <form>
+                <div class="input-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" placeholder="tu@correo.com" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+
+                <button type="button" class="btn-primary-login" onclick="window.location.href='principal.html'">
+    Entrar
+</button>
+            </form>
+
+            <p class="footer-text">¿No tienes cuenta? <a href="#">Regístrate aquí</a></p>
+        </div>
+    </main>
+
+</body>
+</html>

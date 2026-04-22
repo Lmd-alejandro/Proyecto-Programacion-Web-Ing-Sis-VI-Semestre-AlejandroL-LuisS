@@ -1,0 +1,541 @@
+/* --- VARIABLES Y RESET --- */
+:root {
+    --azul: #4F46E5;
+    --azul-dark: #4338ca;
+    --fondo: #F8FAFC;
+    --texto: #1e293b;
+    --gris-suave: #64748b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Esto evita que los cuadros se desborden */
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.5;
+}
+
+/* --- NAVEGACIÓN --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--gris-suave);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--azul);
+}
+
+.btn-login {
+    background: var(--azul);
+    color: white !important;
+    padding: 10px 25px;
+    border-radius: 12px;
+}
+
+/* --- SECCIÓN INICIO (HERO) --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 8%;
+    gap: 50px;
+    min-height: 80vh;
+}
+
+.hero-text { flex: 1; }
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: var(--gris-suave);
+    margin-bottom: 30px;
+}
+
+.search-box {
+    display: flex;
+    background: white;
+    padding: 8px;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    max-width: 480px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    padding: 15px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.btn-search {
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 0 30px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.hero-image { flex: 1; text-align: right; }
+
+.hero-image img {
+    width: 100%;
+    max-width: 550px;
+    border-radius: 40px;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+}
+
+/* --- PÁGINA DE LOGIN --- */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 20px;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    outline: none;
+}
+
+.input-group input:focus { border-color: var(--azul); }
+
+/* --- PÁGINA DE TUTORES (PRINCIPAL) --- */
+.tutors-section { padding: 60px 8%; text-align: center; }
+
+.tutors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.tutor-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.tutor-card:hover { transform: translateY(-10px); }
+
+.tutor-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.main-footer {
+    background: white;
+    padding: 40px 8%;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.team-names {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    color: var(--gris-suave);
+    font-size: 0.9rem;
+}
+/* --- SECCIÓN CÓMO FUNCIONA --- */
+.steps { 
+    padding: 80px 8%; 
+    text-align: center; 
+    background: white; 
+}
+.steps h2 { 
+    margin-bottom: 50px; 
+    font-size: 2.5rem; 
+    color: var(--texto);
+}
+.steps-grid { 
+    display: flex; 
+    justify-content: center; 
+    gap: 40px; 
+}
+.step { 
+    flex: 1; 
+    padding: 20px; 
+}
+.step span { 
+    background: var(--azul); 
+    color: white; 
+    width: 50px; 
+    height: 50px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 50%; 
+    margin: 0 auto 20px; 
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* --- EFECTO HOVER PARA BOTONES --- */
+.btn-search:hover, .btn-login:hover, .btn-primary:hover {
+    background-color: var(--azul-dark);
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+}
+/* --- ESTILOS BUSCADOR TUTORES --- */
+.search-header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.search-header h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.search-bar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 2px solid #000;
+    border-radius: 12px;
+    padding: 12px 20px;
+    background: white;
+}
+
+.search-inner {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-inner input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* --- LAYOUT LATERAL --- */
+.main-layout {
+    display: flex;
+    padding: 20px 8%;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.filters-sidebar {
+    width: 280px;
+    border: 2px solid #000;
+    border-radius: 20px;
+    padding: 25px;
+    background: white;
+}
+
+.filters-sidebar h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.filter-section {
+    margin-bottom: 25px;
+}
+
+.filter-section label {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.filter-section select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background: #fff;
+}
+
+/* --- GRID DE TARJETAS --- */
+.tutors-grid-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.tutor-card {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.tutor-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.tutor-meta {
+    padding: 15px;
+    text-align: center;
+    border-top: 1.5px solid #000;
+}
+
+.tutor-meta h3 { font-size: 1.3rem; margin-bottom: 5px; }
+.tutor-meta p { color: #555; }
+/* --- DISEÑO DE BUSCADOR (FIGMA) --- */
+.search-header {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.search-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+.search-bar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 2px solid #000; /* Borde negro grueso como en Figma */
+    border-radius: 12px;
+    padding: 10px 25px;
+    background: #fff;
+}
+
+.search-inner {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-inner input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1.2rem;
+    background: transparent;
+}
+
+/* --- ESTRUCTURA LATERAL (LAYOUT) --- */
+.main-layout {
+    display: flex;
+    padding: 20px 8%;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* --- CAJA DE FILTROS --- */
+.filters-sidebar {
+    width: 260px;
+    border: 2px solid #000; /* Borde negro de Figma */
+    border-radius: 18px;
+    padding: 25px;
+    background: #fff;
+}
+
+.filters-sidebar h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.filter-section {
+    margin-bottom: 25px;
+}
+
+.filter-section label {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.filter-section select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* --- TARJETAS DE TUTORES --- */
+.tutors-grid-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.tutor-card {
+    border: 1.5px solid #000; /* Borde definido */
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.tutor-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.tutor-meta {
+    padding: 15px;
+    border-top: 2px solid #000; /* Línea divisoria de Figma */
+}
+
+.tutor-meta h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.tutor-meta p {
+    margin: 5px 0 0;
+    color: #666;
+}
+/* --- ARREGLO FINAL LOGIN --- */
+.login-body {
+    background-color: #F8FAFC;
+    margin: 0;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px); /* Centrado vertical perfecto */
+}
+
+.login-card {
+    background: white;
+    padding: 45px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+.login-card h2 {
+    font-size: 2.2rem;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1e293b;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: #F1F5F9; /* Fondo gris claro suave como en tu foto */
+    border: none;
+}
+
+
+/* --- ESTILO PARA EL BOTÓN DE ENTRAR --- */
+.btn-primary-login {
+    width: 100%;            /* Ocupa todo el ancho disponible */
+    background-color: #4F46E5; /* El azul de MyTeacher */
+    color: white;           /* Texto blanco */
+    padding: 16px;          /* Lo hace más alto/grueso */
+    border: none;           /* Quita el borde gris feo */
+    border-radius: 12px;    /* Bordes redondeados modernos */
+    font-size: 1.1rem;      /* Letra un poco más grande */
+    font-weight: bold;      /* Letra negrita */
+    cursor: pointer;        /* Cambia el mouse a una manito */
+    margin-top: 20px;       /* Separa el botón de los campos de arriba */
+    transition: background 0.3s ease; /* Efecto suave al pasar el mouse */
+}
+
+.btn-primary-login:hover {
+    background-color: #4338ca; /* Azul más oscuro al pasar el mouse */
+}
