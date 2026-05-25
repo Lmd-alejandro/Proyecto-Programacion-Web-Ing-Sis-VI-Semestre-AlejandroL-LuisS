@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <section class="publish-section">
+      <h2>Panel administrador</h2>
+
+      <div class="publish-form">
+        <h3>Total reservas</h3>
+
+        <div id="listaReservas"></div>
+      </div>
+    </section>
+
+    <script>
+      async function cargarReservas() {
+        const response = await fetch("http://localhost:3000/api/reservas");
+
+        const reservas = await response.json();
+
+        const lista = document.getElementById("listaReservas");
+
+        lista.innerHTML = "";
+
+        reservas.forEach((reserva) => {
+          lista.innerHTML += `
+        
+        <div
+        style="
+        padding:20px;
+        background:#f8fafc;
+        border-radius:15px;
+        margin-bottom:15px;
+        "
+        >
+
+            <h3>${reserva.estudiante}</h3>
+
+            <p>Tutor: ${reserva.tutor}</p>
+
+            <p>Fecha: ${reserva.fecha}</p>
+
+            <p>Hora: ${reserva.hora}</p>
+
+        </div>
+
+        `;
+        });
+      }
+
+      cargarReservas();
+    </script>
+  </body>
+</html>

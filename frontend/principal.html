@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>MyTeacher</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <h2 class="logo">MyTeacher</h2>
+
+      <div class="user-area">
+        <button class="btn-reservas" onclick="abrirReservas()">
+          Mis reservas
+        </button>
+
+        <div class="user-box" id="userBox">Bienvenido</div>
+
+        <button class="logout-btn" onclick="cerrarSesion()">
+          Cerrar sesion
+        </button>
+      </div>
+    </nav>
+
+    <section class="search-header">
+      <div class="search-header-content">
+        <span class="badge"> Encuentra tu profesor ideal </span>
+
+        <h1>Aprende con los mejores tutores</h1>
+
+        <p>Reserva clases personalizadas con profesores expertos</p>
+
+        <div class="search-bar-container">
+          <div class="search-inner">
+            <input type="text" placeholder="Buscar profesor..." />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-layout">
+      <aside class="filters-sidebar">
+        <h2>Filtros</h2>
+
+        <div class="filter-section">
+          <label> Materia </label>
+
+          <select>
+            <option>Todas</option>
+
+            <option>Programacion</option>
+
+            <option>Matematicas</option>
+
+            <option>Ingles</option>
+          </select>
+        </div>
+
+        <div class="filter-section">
+          <label> Ciudad </label>
+
+          <select>
+            <option>Todas</option>
+
+            <option>Barranquilla</option>
+
+            <option>Soledad</option>
+          </select>
+        </div>
+      </aside>
+
+      <div class="tutors-grid-container" id="contenedorTutores"></div>
+    </section>
+
+    <section class="publish-section" id="adminSection" style="display: none">
+      <h2>Publicar nuevo tutor</h2>
+
+      <form class="publish-form" id="formTutor">
+        <input
+          type="text"
+          id="nombre"
+          placeholder="Nombre del tutor"
+          required
+        />
+
+        <input type="text" id="materia" placeholder="Materia" required />
+
+        <input type="text" id="ciudad" placeholder="Ciudad" required />
+
+        <input type="text" id="precio" placeholder="Precio" required />
+
+        <input type="text" id="imagen" placeholder="URL de imagen" required />
+
+        <textarea
+          id="descripcion"
+          placeholder="Descripcion"
+          required
+        ></textarea>
+
+        <button type="submit">Publicar tutor</button>
+      </form>
+    </section>
+
+    <div class="modal" id="modalReservas" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Mis reservas</h2>
+
+          <button class="close-modal" onclick="cerrarModalReservas()">X</button>
+        </div>
+
+        <div id="listaReservas"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

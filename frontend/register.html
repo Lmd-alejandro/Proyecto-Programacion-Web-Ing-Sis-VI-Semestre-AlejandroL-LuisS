@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Registro | MyTeacher</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="login-body">
+    <main class="login-container">
+      <div class="login-left">
+        <h1>Crea tu cuenta</h1>
+
+        <p>Regístrate para comenzar a encontrar los mejores tutores.</p>
+
+        <img
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200"
+          alt="students"
+        />
+      </div>
+
+      <div class="login-card">
+        <div class="login-header">
+          <h2>Crear cuenta</h2>
+
+          <p>Regístrate para comenzar</p>
+        </div>
+
+        <form id="registerForm">
+          <div class="input-group">
+            <label> Nombre completo </label>
+
+            <input type="text" id="registerName" required />
+          </div>
+
+          <div class="input-group">
+            <label> Correo electrónico </label>
+
+            <input type="email" id="registerEmail" required />
+          </div>
+
+          <div class="input-group">
+            <label> Contraseña </label>
+
+            <input type="password" id="registerPassword" required />
+          </div>
+
+          <button type="submit" class="btn-primary-login">Registrarme</button>
+        </form>
+
+        <p class="footer-text">
+          ¿Ya tienes cuenta?
+
+          <a href="login.html"> Inicia sesión </a>
+        </p>
+      </div>
+    </main>
+
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const nombre = document.getElementById("registerName").value;
+
+          const correo = document.getElementById("registerEmail").value;
+
+          const password = document.getElementById("registerPassword").value;
+
+          try {
+            const response = await fetch(
+              "http://localhost:3000/api/auth/register",
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type": "application/json",
+                },
+
+                body: JSON.stringify({
+                  nombre,
+                  correo,
+                  password,
+                }),
+              },
+            );
+
+            const data = await response.json();
+
+            if (response.ok) {
+              alert("usuario registrado");
+
+              window.location.href = "login.html";
+            } else {
+              alert(data.mensaje);
+            }
+          } catch (error) {
+            alert("error servidor");
+          }
+        });
+    </script>
+  </body>
+</html>

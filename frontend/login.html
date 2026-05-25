@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login | MyTeacher</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="login-body">
+    <div class="login-container">
+      <div class="login-left">
+        <h1>Bienvenido a MyTeacher</h1>
+
+        <p>Encuentra tutores expertos y aprende de manera fácil y rápida.</p>
+
+        <img
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200"
+          alt="students"
+        />
+      </div>
+
+      <div class="login-card">
+        <div class="login-header">
+          <h2>Iniciar sesión</h2>
+
+          <p>Selecciona tu tipo de acceso</p>
+        </div>
+
+        <div class="role-selector">
+          <button type="button" class="role-btn active" id="btnUsuario">
+            Usuario
+          </button>
+
+          <button type="button" class="role-btn" id="btnAdmin">
+            Administrador
+          </button>
+        </div>
+
+        <form id="loginForm">
+          <div class="input-group">
+            <label>Correo</label>
+
+            <input
+              type="email"
+              id="correo"
+              placeholder="Ingresa tu correo"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label>Contraseña</label>
+
+            <input
+              type="password"
+              id="password"
+              placeholder="Ingresa tu contraseña"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn-primary-login">Entrar</button>
+        </form>
+
+        <div class="divider">o continuar con</div>
+
+        <button class="google-btn">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
+            alt="google"
+          />
+
+          Google
+        </button>
+
+        <p class="footer-text">
+          ¿No tienes cuenta?
+
+          <a href="register.html">Regístrate</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      let rolSeleccionado = "usuario";
+
+      const btnUsuario = document.getElementById("btnUsuario");
+
+      const btnAdmin = document.getElementById("btnAdmin");
+
+      btnUsuario.addEventListener("click", () => {
+        rolSeleccionado = "usuario";
+
+        btnUsuario.classList.add("active");
+
+        btnAdmin.classList.remove("active");
+      });
+
+      btnAdmin.addEventListener("click", () => {
+        rolSeleccionado = "admin";
+
+        btnAdmin.classList.add("active");
+
+        btnUsuario.classList.remove("active");
+      });
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const correo = document.getElementById("correo").value;
+
+          const password = document.getElementById("password").value;
+
+          try {
+            const response = await fetch(
+              "http://localhost:3000/api/auth/login",
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type": "application/json",
+                },
+
+                body: JSON.stringify({
+                  correo,
+                  password,
+                  rol: rolSeleccionado,
+                }),
+              },
+            );
+
+            const data = await response.json();
+
+            if (response.ok) {
+              localStorage.setItem("usuario", JSON.stringify(data.usuario));
+
+              window.location.href = "principal.html";
+            } else {
+              alert(data.mensaje);
+            }
+          } catch (error) {
+            alert("error servidor");
+          }
+        });
+    </script>
+  </body>
+</html>
